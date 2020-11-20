@@ -24,10 +24,17 @@ const ListWithAddItem = () => {
       return (
         <ul>
         {list.map(item => (
-          <li key={item}>{item}</li>
+          <li key={item}>{item} <button onClick={() => handleRemove(item)}>Poista</button></li>
         ))}
       </ul>
       )
+  }
+
+  function handleRemove(id) {
+    console.log(id)
+    const newList = list.filter((item) => item !== id);
+ 
+  setList(newList);
   }
  
   return (

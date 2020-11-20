@@ -4,7 +4,7 @@ import Lista1 from './lista1'
 function App() {
   return (
     <div className="App">
-      <Lista1/>
+      <Lista/>
     </div>
   );
 }
