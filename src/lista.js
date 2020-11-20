@@ -31,7 +31,6 @@ const ListWithAddItem = () => {
   }
 
   function handleRemove(id) {
-    console.log(id)
     const newList = list.filter((item) => item !== id);
  
   setList(newList);
