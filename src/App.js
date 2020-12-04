@@ -9,7 +9,7 @@ function App() {
   return (
     <Router>
       <Switch>
-        <Route path="/">
+        <Route path="/Home">
           <ListPage />
         </Route>
         <Route path="/addTask">

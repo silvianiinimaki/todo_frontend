@@ -12,7 +12,7 @@ const ListPage = () => {
   };
   useEffect(() => {
     axios
-      .get("https://tamk-4a00ez62-3002-group20.herokuapp.com/")
+      .get("https://tamk-4a00ez62-3002-group20.herokuapp.com/api")
       .then(function (response) {
         setList(response.data);
       })
@@ -22,7 +22,10 @@ const ListPage = () => {
   const lista = () => {
     const i = Object.values(list);
     return i.map((item) => (
-      <div style={{ textAlign: "center", marginTop: "3%" }} className="item">
+      <div
+        style={{ textAlign: "center", marginTop: "3%", color: "lightgray" }}
+        className="item"
+      >
         <div className="content">
           <a className="header">{item.title}</a>
           <div className="description">
@@ -51,7 +54,7 @@ const ListPage = () => {
 
   return (
     <div>
-      <div className="ui items">{value && !newTask ? lista() : ""}</div>
+      <div className="ui items">{lista()}</div>
 
       <div style={{ textAlign: "center", marginTop: "5%" }}>
         {newTask ? (
