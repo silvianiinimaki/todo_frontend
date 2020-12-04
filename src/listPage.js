@@ -51,7 +51,7 @@ const ListPage = () => {
 
   return (
     <div>
-      <div className="ui items">{value ? lista() : ""}</div>
+      <div className="ui items">{lista()}</div>
 
       <div style={{ textAlign: "center", marginTop: "5%" }}>
         {newTask ? (
