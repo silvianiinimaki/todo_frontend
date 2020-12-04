@@ -12,7 +12,7 @@ const ListPage = () => {
   };
   useEffect(() => {
     axios
-      .get("https://tamk-4a00ez62-3002-group20.herokuapp.com/")
+      .get("https://tamk-4a00ez62-3002-group20.herokuapp.com/api")
       .then(function (response) {
         setList(response.data);
       })
