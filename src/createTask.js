@@ -6,7 +6,6 @@ const CreateTask = (props) => {
   const [description, setDescription] = React.useState("");
   const [deadline, setDeadline] = React.useState("");
   const [rating, setRating] = React.useState("");
-  const [checked, setChecked] = React.useState(false);
 
   const submitValue = () => {
     const taskDetails = {
@@ -14,7 +13,6 @@ const CreateTask = (props) => {
       description: description,
       deadline: deadline,
       rating: rating,
-      checked: checked,
     };
     if (
       title !== "" &&
@@ -53,14 +51,6 @@ const CreateTask = (props) => {
             onChange={(e) => setTitle(e.target.value)}
           />
         </div>
-        <label>
-          <input
-            type="checkbox"
-            checked={checked}
-            onChange={() => setChecked(!checked)}
-          />
-          Check Me!
-        </label>
         <div className="field">
           <input
             style={{ width: "20%" }}

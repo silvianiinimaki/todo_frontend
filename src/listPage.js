@@ -28,6 +28,14 @@ const ListPage = () => {
       >
         <div className="content">
           <a className="header">{item.title}</a>
+          <label>
+            <input
+              type="checkbox"
+              checked={item.checked}
+              onChange={() => (item.checked = !item.checked)}
+            />
+            Check Me!
+          </label>
           <div className="description">
             <p>{item.description}</p>
           </div>
