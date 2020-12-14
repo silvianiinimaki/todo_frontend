@@ -9,10 +9,10 @@ const CreateTask = (props) => {
 
   const submitValue = () => {
     const taskDetails = {
-      title: title,
-      description: description,
-      deadline: deadline,
-      dating: rating,
+      'title': title,
+      'description': description,
+      'deadline': deadline,
+      'rating': rating,
     };
     if (
       title !== "" &&
