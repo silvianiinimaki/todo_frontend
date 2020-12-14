@@ -17,7 +17,7 @@ const ListPage = () => {
         setList(response.data);
       })
       .catch((err) => console.log(err));
-  }, []);
+  });
 
   const lista = () => {
     const i = Object.values(list);
@@ -47,7 +47,7 @@ const ListPage = () => {
         value,
       })
       .then((response) => console.log(response));
-    setList(list.concat(newValue));
+    // setList(list.concat(newValue));
   }
 
   function changeNewTask(newValue) {
