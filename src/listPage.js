@@ -17,7 +17,7 @@ const ListPage = () => {
         setList(response.data);
       })
       .catch((err) => console.log(err));
-  });
+  }, []);
 
   const lista = () => {
     const i = Object.values(list);
@@ -41,13 +41,16 @@ const ListPage = () => {
 
   function handleChange(newValue) {
     setValue(newValue);
+    console.log(value);
+    /*
     // Try adding new value to database
     axios
       .post("https://tamk-4a00ez62-3002-group20.herokuapp.com/user/1", {
         value,
       })
       .then((response) => console.log(response));
-    // setList(list.concat(newValue));
+      */
+    setList(list.concat(newValue));
   }
 
   function changeNewTask(newValue) {
