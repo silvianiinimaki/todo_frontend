@@ -41,7 +41,6 @@ const ListPage = () => {
 
   function handleChange(newValue) {
     setValue(newValue);
-    console.log(value);
     /*
     // Try adding new value to database
     axios
