@@ -24,7 +24,7 @@ const ListPage = () => {
     const i = Object.values(list);
     return i.map((item) => (
       <div
-        style={{ textAlign: "center", marginTop: "3%", color: "lightgray" }}
+        style={{ textAlign: "center", marginTop: "3%", color: "black" }}
         className="item"
       >
         <div className="content">

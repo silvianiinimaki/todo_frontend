@@ -1,6 +1,7 @@
 import Lista from "./lista";
 import Lista1 from "./lista1";
 import ListPage from "./listPage";
+import "./App.css";
 import CreateTask from "./createTask";
 
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
