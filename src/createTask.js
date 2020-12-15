@@ -42,7 +42,6 @@ const CreateTask = (props) => {
         style={{
           textAlign: "center",
           marginTop: "1%",
-          justifyContent: "center",
         }}
         onSubmit={handleSubmit}
       >
