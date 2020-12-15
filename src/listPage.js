@@ -29,9 +29,24 @@ const ListPage = () => {
       >
         <details>
           <div className="content">
-            <summary>
-              {item.title}
+            <summary>{item.title}</summary>
+            <div className="checked">
+              <label>
+                <input
+                  type="checkbox"
+                  checked={item.checked}
+                  // ei toimi vielä
+                  onChange={() => (item.checked = !item.checked)}
+                />
+              </label>
+            </div>
+
+            <div className="description">
+              <p>{item.description}</p>
+            </div>
+            <div className="extra">
               Deadline: {item.deadline}
+              Tärkeys:{" "}
               <ReactStars
                 count={5}
                 value={item.rating}
@@ -42,18 +57,6 @@ const ListPage = () => {
                 fullIcon={<i className="fa fa-star"></i>}
                 activeColor="#ffd700"
               />
-              <label>
-                <input
-                  type="checkbox"
-                  checked={item.checked}
-                  // ei toimi vielä
-                  onChange={() => (item.checked = !item.checked)}
-                />
-                Check Me!
-              </label>
-            </summary>
-            <div className="description">
-              <p>{item.description}</p>
             </div>
           </div>
         </details>
