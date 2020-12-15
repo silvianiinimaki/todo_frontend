@@ -1,18 +1,18 @@
 import React from "react";
 import { Button } from "semantic-ui-react";
+import ReactStars from "react-rating-stars-component";
 
 const CreateTask = (props) => {
   const [title, setTitle] = React.useState("");
   const [description, setDescription] = React.useState("");
   const [deadline, setDeadline] = React.useState("");
   const [rating, setRating] = React.useState("");
-
   const submitValue = () => {
     const taskDetails = {
       title: title,
       description: description,
       deadline: deadline,
-      dating: rating,
+      rating: rating,
     };
     if (
       title !== "" &&
@@ -39,7 +39,10 @@ const CreateTask = (props) => {
     return (
       <form
         className="ui form"
-        style={{ textAlign: "center", marginTop: "1%" }}
+        style={{
+          textAlign: "center",
+          marginTop: "1%",
+        }}
         onSubmit={handleSubmit}
       >
         <div className="field">
@@ -70,11 +73,14 @@ const CreateTask = (props) => {
           />
         </div>
         <div className="field">
-          <input
-            style={{ width: "20%" }}
-            type="text"
-            name="taskRating"
-            placeholder="Tärkeys"
+          <ReactStars
+            count={5}
+            size={24}
+            edit={true}
+            isHalf={false}
+            emptyIcon={<i className="far fa-star"></i>}
+            fullIcon={<i className="fa fa-star"></i>}
+            activeColor="#ffd700"
             onChange={(e) => setRating(e.target.value)}
           />
         </div>
