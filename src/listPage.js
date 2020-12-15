@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import CreateTask from "./createTask";
-import { Button } from "semantic-ui-react";
+import { Button, Item } from "semantic-ui-react";
 import ReactStars from "react-rating-stars-component";
 const axios = require("axios");
 
@@ -43,11 +43,9 @@ const ListPage = () => {
           </div>
           <div className="extra">
             Deadline: {item.deadline} <br /> Tärkeys: {item.rating}
-          </div>
-          <div className="rating">
             <ReactStars
               count={5}
-              onChange={ratingChanged}
+              value={Item.rating}
               size={24}
               isHalf={true}
               emptyIcon={<i className="far fa-star"></i>}
@@ -59,10 +57,6 @@ const ListPage = () => {
         </div>
       </div>
     ));
-  };
-
-  const ratingChanged = (newRating) => {
-    console.log(newRating);
   };
 
   function handleChange(newValue) {
