@@ -27,9 +27,9 @@ const ListPage = () => {
         style={{ textAlign: "center", marginTop: "3%", color: "lightgray" }}
         className="item"
       >
-        <details>
-          <div className="content">
-            <summary>{item.title}</summary>
+        <div className="content">
+          <details style={{ textAlign: "center" }}>
+            <summary style={{ textAlign: "center" }}>{item.title}</summary>
             <div className="checked">
               <label>
                 <input
@@ -58,8 +58,8 @@ const ListPage = () => {
                 activeColor="#ffd700"
               />
             </div>
-          </div>
-        </details>
+          </details>
+        </div>
       </div>
     ));
   };
