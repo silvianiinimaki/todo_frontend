@@ -71,7 +71,6 @@ const CreateTask = (props) => {
         </div>
         <div className="field">
           <ReactStars
-            style={{ textAlign: "center" }}
             count={5}
             size={24}
             edit={true}
