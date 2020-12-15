@@ -1,0 +1,10 @@
+.app {
+  background: #209cee;
+  height: 100vh;
+  padding: 30px;
+  align-content: center;
+}
+.item {
+  background-color: azure;
+  align-items: center;
+}
