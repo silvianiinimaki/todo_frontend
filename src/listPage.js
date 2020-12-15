@@ -30,7 +30,18 @@ const ListPage = () => {
         <details>
           <div className="content">
             <summary>
-              <h2>{item.title} </h2>
+              {item.title}
+              Deadline: {item.deadline}
+              <ReactStars
+                count={5}
+                value={item.rating}
+                size={24}
+                edit={false}
+                isHalf={false}
+                emptyIcon={<i className="far fa-star"></i>}
+                fullIcon={<i className="fa fa-star"></i>}
+                activeColor="#ffd700"
+              />
               <label>
                 <input
                   type="checkbox"
@@ -43,19 +54,6 @@ const ListPage = () => {
             </summary>
             <div className="description">
               <p>{item.description}</p>
-            </div>
-            <div className="extra">
-              Deadline: {item.deadline}
-              <ReactStars
-                count={5}
-                value={item.rating}
-                size={24}
-                edit={false}
-                isHalf={false}
-                emptyIcon={<i className="far fa-star"></i>}
-                fullIcon={<i className="fa fa-star"></i>}
-                activeColor="#ffd700"
-              />
             </div>
           </div>
         </details>
