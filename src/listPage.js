@@ -42,7 +42,7 @@ const ListPage = () => {
             <p>{item.description}</p>
           </div>
           <div className="extra">
-            Deadline: {item.deadline} <br />{" "}
+            Deadline: {item.deadline}
             <ReactStars
               count={5}
               value={item.rating}

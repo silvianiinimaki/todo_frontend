@@ -1,5 +1,6 @@
 import React from "react";
 import { Button } from "semantic-ui-react";
+import ReactStars from "react-rating-stars-component";
 
 const CreateTask = (props) => {
   const [title, setTitle] = React.useState("");
@@ -69,11 +70,14 @@ const CreateTask = (props) => {
           />
         </div>
         <div className="field">
-          <input
-            style={{ width: "20%" }}
-            type="text"
-            name="taskRating"
-            placeholder="Tärkeys"
+          <ReactStars
+            count={5}
+            size={24}
+            edit={true}
+            isHalf={false}
+            emptyIcon={<i className="far fa-star"></i>}
+            fullIcon={<i className="fa fa-star"></i>}
+            activeColor="#ffd700"
             onChange={(e) => setRating(e.target.value)}
           />
         </div>
