@@ -45,11 +45,11 @@ const ListPage = () => {
             Deadline: {item.deadline} <br />{" "}
             <ReactStars
               count={5}
-              value={Item.rating}
+              value={item.rating}
               size={24}
-              isHalf={true}
+              edit={false}
+              isHalf={false}
               emptyIcon={<i className="far fa-star"></i>}
-              halfIcon={<i className="fa fa-star-half-alt"></i>}
               fullIcon={<i className="fa fa-star"></i>}
               activeColor="#ffd700"
             />
