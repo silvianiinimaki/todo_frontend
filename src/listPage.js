@@ -13,7 +13,7 @@ const ListPage = () => {
   };
   useEffect(() => {
     axios
-      .get("https://tamk-4a00ez62-3002-group20-old.herokuapp.com/api")
+      .get("https://tamk-4a00ez62-3002-group20.herokuapp.com/api")
       .then(function (response) {
         setList(response.data);
       })
@@ -42,7 +42,7 @@ const ListPage = () => {
             <p>{item.description}</p>
           </div>
           <div className="extra">
-            Deadline: {item.deadline} <br /> Tärkeys: {item.rating}
+            Deadline: {item.deadline} <br />{" "}
             <ReactStars
               count={5}
               value={Item.rating}
