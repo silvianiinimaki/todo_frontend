@@ -6,7 +6,6 @@ const CreateTask = (props) => {
   const [description, setDescription] = React.useState("");
   const [deadline, setDeadline] = React.useState("");
   const [rating, setRating] = React.useState("");
-
   const submitValue = () => {
     const taskDetails = {
       title: title,

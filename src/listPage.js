@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import CreateTask from "./createTask";
 import { Button } from "semantic-ui-react";
+import ReactStars from "react-rating-stars-component";
 const axios = require("axios");
 
 const ListPage = () => {
@@ -32,6 +33,7 @@ const ListPage = () => {
             <input
               type="checkbox"
               checked={item.checked}
+              // ei toimi vielä
               onChange={() => (item.checked = !item.checked)}
             />
             Check Me!
@@ -42,9 +44,25 @@ const ListPage = () => {
           <div className="extra">
             Deadline: {item.deadline} <br /> Tärkeys: {item.rating}
           </div>
+          <div className="rating">
+            <ReactStars
+              count={5}
+              onChange={ratingChanged}
+              size={24}
+              isHalf={true}
+              emptyIcon={<i className="far fa-star"></i>}
+              halfIcon={<i className="fa fa-star-half-alt"></i>}
+              fullIcon={<i className="fa fa-star"></i>}
+              activeColor="#ffd700"
+            />
+          </div>
         </div>
       </div>
     ));
+  };
+
+  const ratingChanged = (newRating) => {
+    console.log(newRating);
   };
 
   function handleChange(newValue) {
