@@ -27,34 +27,38 @@ const ListPage = () => {
         style={{ textAlign: "center", marginTop: "3%", color: "lightgray" }}
         className="item"
       >
-        <div className="content">
-          <a className="header">{item.title}</a>
-          <label>
-            <input
-              type="checkbox"
-              checked={item.checked}
-              // ei toimi vielä
-              onChange={() => (item.checked = !item.checked)}
-            />
-            Check Me!
-          </label>
-          <div className="description">
-            <p>{item.description}</p>
+        <details>
+          <div className="content">
+            <summary>
+              <h2>{item.title} </h2>
+              <label>
+                <input
+                  type="checkbox"
+                  checked={item.checked}
+                  // ei toimi vielä
+                  onChange={() => (item.checked = !item.checked)}
+                />
+                Check Me!
+              </label>
+            </summary>
+            <div className="description">
+              <p>{item.description}</p>
+            </div>
+            <div className="extra">
+              Deadline: {item.deadline}
+              <ReactStars
+                count={5}
+                value={item.rating}
+                size={24}
+                edit={false}
+                isHalf={false}
+                emptyIcon={<i className="far fa-star"></i>}
+                fullIcon={<i className="fa fa-star"></i>}
+                activeColor="#ffd700"
+              />
+            </div>
           </div>
-          <div className="extra">
-            Deadline: {item.deadline}
-            <ReactStars
-              count={5}
-              value={item.rating}
-              size={24}
-              edit={false}
-              isHalf={false}
-              emptyIcon={<i className="far fa-star"></i>}
-              fullIcon={<i className="fa fa-star"></i>}
-              activeColor="#ffd700"
-            />
-          </div>
-        </div>
+        </details>
       </div>
     ));
   };
