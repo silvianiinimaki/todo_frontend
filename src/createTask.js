@@ -39,7 +39,11 @@ const CreateTask = (props) => {
     return (
       <form
         className="ui form"
-        style={{ textAlign: "center", marginTop: "1%" }}
+        style={{
+          textAlign: "center",
+          marginTop: "1%",
+          justifyContent: "center",
+        }}
         onSubmit={handleSubmit}
       >
         <div className="field">
