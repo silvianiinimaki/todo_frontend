@@ -48,6 +48,7 @@ const ListPage = () => {
               Deadline: {item.deadline}
               Tärkeys:{" "}
               <ReactStars
+                style={{ textAlign: "center" }}
                 count={5}
                 value={item.rating}
                 size={24}
