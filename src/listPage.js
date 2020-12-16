@@ -25,40 +25,46 @@ const ListPage = () => {
     const i = Object.values(list);
     return i.map((item) => (
       <div
-        style={{ textAlign: "center", marginTop: "3%", color: "black" }}
+        style={{
+          textAlign: "center",
+          marginTop: "3%",
+          color: "black",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
         className="item"
       >
         <div className="content">
+          <div className="header">{item.title}</div>
+          <div className="checked">
+            <label>
+              <input
+                type="checkbox"
+                checked={item.checked}
+                // ei toimi vielä
+                onChange={() => (item.checked = !item.checked)}
+              />
+            </label>
+          </div>
+          <div className="extra">
+            Deadline: {reformattedDate(item.deadline_date)}
+            <br></br>
+            Tärkeys:{" "}
+            <ReactStars
+              count={5}
+              value={item.rating}
+              size={24}
+              edit={false}
+              isHalf={false}
+              emptyIcon={<i className="far fa-star"></i>}
+              fullIcon={<i className="fa fa-star"></i>}
+              activeColor="#ffd700"
+            />
+          </div>
           <details style={{ textAlign: "center" }}>
-            <summary style={{ textAlign: "center" }}>{item.title}</summary>
-            <div className="checked">
-              <label>
-                <input
-                  type="checkbox"
-                  checked={item.checked}
-                  // ei toimi vielä
-                  onChange={() => (item.checked = !item.checked)}
-                />
-              </label>
-            </div>
-
+            <summary style={{ textAlign: "center" }}>Show details</summary>
             <div className="description">
               <p>{item.description}</p>
-            </div>
-            <div className="extra">
-              Deadline: {reformattedDate(item.deadline_date)}
-              <br></br>
-              Tärkeys:{" "}
-              <ReactStars
-                count={5}
-                value={item.rating}
-                size={24}
-                edit={false}
-                isHalf={false}
-                emptyIcon={<i className="far fa-star"></i>}
-                fullIcon={<i className="fa fa-star"></i>}
-                activeColor="#ffd700"
-              />
             </div>
           </details>
         </div>
@@ -67,7 +73,7 @@ const ListPage = () => {
   };
 
   const reformattedDate = (date) => {
-    const resultDate = moment(date).format("YYYY/MM/DD");
+    const resultDate = moment(date).format("DD/MM/YYYY");
     return resultDate;
   };
 
