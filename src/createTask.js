@@ -85,7 +85,7 @@ const CreateTask = (props) => {
             emptyIcon={<i className="far fa-star"></i>}
             fullIcon={<i className="fa fa-star"></i>}
             activeColor="#ffd700"
-            onChange={(e) => setRating(e.target.value)}
+            onChange={(value) => setRating(value)}
           />
         </div>
         <div className="field">
