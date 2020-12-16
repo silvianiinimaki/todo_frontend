@@ -1,7 +1,8 @@
 import React from "react";
 import { Button } from "semantic-ui-react";
 import ReactStars from "react-rating-stars-component";
-import DatePicker from "react-date-picker";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 
 const CreateTask = (props) => {
   const [title, setTitle] = React.useState("");
@@ -66,7 +67,13 @@ const CreateTask = (props) => {
           />
         </div>
         <div>
-          <DatePicker setDeadline={setDeadline} deadline={deadline} />
+          <DatePicker
+            selected={deadline}
+            onChange={(deadline) => setDeadline(deadline)}
+            placeholderText="Select deadline"
+            showTimeSelect
+            dateFormat="MMMM d, yyyy h:mmaa"
+          />
         </div>
 
         <div className="field">
