@@ -1,11 +1,14 @@
 import React from "react";
 import { Button } from "semantic-ui-react";
 import ReactStars from "react-rating-stars-component";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 
 const CreateTask = (props) => {
   const [title, setTitle] = React.useState("");
   const [description, setDescription] = React.useState("");
-  const [deadline, setDeadline] = React.useState("");
+
+  const [deadline, setDeadline] = React.useState(new Date());
   const [rating, setRating] = React.useState("");
   const submitValue = () => {
     const taskDetails = {
@@ -63,15 +66,18 @@ const CreateTask = (props) => {
             onChange={(e) => setDescription(e.target.value)}
           />
         </div>
-        <div className="field">
-          <input
-            style={{ width: "20%" }}
-            type="text"
-            name="taskDeadline"
-            placeholder="Deadline"
-            onChange={(e) => setDeadline(e.target.value)}
+        <div>
+          <DatePicker
+            placeholderText="Select deadline"
+            selected={deadline}
+            isClearable
+            onChange={(deadline) => setDeadline(deadline)}
+            showTimeSelect
+            closeOnScroll={(e) => e.target === document}
+            dateFormat="yyyy-MM-dd"
           />
         </div>
+
         <div className="field">
           <ReactStars
             count={5}
@@ -81,7 +87,7 @@ const CreateTask = (props) => {
             emptyIcon={<i className="far fa-star"></i>}
             fullIcon={<i className="fa fa-star"></i>}
             activeColor="#ffd700"
-            onChange={(e) => setRating(e.target.value)}
+            onChange={(value) => setRating(value)}
           />
         </div>
         <div className="field">

@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import CreateTask from "./createTask";
 import { Button, Item } from "semantic-ui-react";
 import ReactStars from "react-rating-stars-component";
+import moment from "moment";
 const axios = require("axios");
 
 const ListPage = () => {
@@ -24,56 +25,64 @@ const ListPage = () => {
     const i = Object.values(list);
     return i.map((item) => (
       <div
-        style={{ textAlign: "center", marginTop: "3%", color: "lightgray" }}
+        style={{
+          textAlign: "center",
+          marginTop: "3%",
+          color: "black",
+        }}
         className="item"
       >
         <div className="content">
-          <details style={{ textAlign: "center" }}>
-            <summary style={{ textAlign: "center" }}>{item.title}</summary>
-            <div className="checked">
-              <label>
-                <input
-                  type="checkbox"
-                  checked={item.checked}
-                  // ei toimi vielä
-                  onChange={() => (item.checked = !item.checked)}
-                />
-              </label>
-            </div>
-
-            <div className="description">
-              <p>{item.description}</p>
-            </div>
-            <div className="extra">
-              Deadline: {item.deadline}
-              Tärkeys:{" "}
-              <ReactStars
-                count={5}
-                value={item.rating}
-                size={24}
-                edit={false}
-                isHalf={false}
-                emptyIcon={<i className="far fa-star"></i>}
-                fullIcon={<i className="fa fa-star"></i>}
-                activeColor="#ffd700"
+          <div className="header">{item.title}</div>
+          <div className="checked">
+            <label>
+              <input
+                type="checkbox"
+                checked={item.checked}
+                // ei toimi vielä
+                onChange={(item) => (item.checked = !item.checked)}
               />
-            </div>
-          </details>
+            </label>
+          </div>
+          <div className="extra">
+            Deadline: {reformattedDate(item.deadline_date)}
+            <br></br>
+            Tärkeys:{" "}
+            <ReactStars
+              count={5}
+              value={item.rating}
+              size={24}
+              edit={false}
+              isHalf={false}
+              emptyIcon={<i className="far fa-star"></i>}
+              fullIcon={<i className="fa fa-star"></i>}
+              activeColor="#ffd700"
+            />
+          </div>
+
+          <div className="description">
+            <p>{item.description}</p>
+          </div>
         </div>
       </div>
     ));
   };
 
+  const reformattedDate = (date) => {
+    const resultDate = moment(date).format("DD/MM/YYYY");
+    return resultDate;
+  };
+
   function handleChange(newValue) {
     setValue(newValue);
-    /*
+
     // Try adding new value to database
     axios
       .post("https://tamk-4a00ez62-3002-group20.herokuapp.com/user/1", {
         value,
       })
       .then((response) => console.log(response));
-      */
+
     setList(list.concat(newValue));
   }
 
