@@ -1,11 +1,13 @@
 import React from "react";
 import { Button } from "semantic-ui-react";
 import ReactStars from "react-rating-stars-component";
+import DatePicker from "react-date-picker";
 
 const CreateTask = (props) => {
   const [title, setTitle] = React.useState("");
   const [description, setDescription] = React.useState("");
-  const [deadline, setDeadline] = React.useState("");
+
+  const [deadline, setDeadline] = React.useState(new Date());
   const [rating, setRating] = React.useState("");
   const submitValue = () => {
     const taskDetails = {
@@ -63,15 +65,10 @@ const CreateTask = (props) => {
             onChange={(e) => setDescription(e.target.value)}
           />
         </div>
-        <div className="field">
-          <input
-            style={{ width: "20%" }}
-            type="text"
-            name="taskDeadline"
-            placeholder="Deadline"
-            onChange={(e) => setDeadline(e.target.value)}
-          />
+        <div>
+          <DatePicker setDeadline={setDeadline} deadline={deadline} />
         </div>
+
         <div className="field">
           <ReactStars
             count={5}
