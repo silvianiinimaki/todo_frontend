@@ -29,8 +29,6 @@ const ListPage = () => {
           textAlign: "center",
           marginTop: "3%",
           color: "black",
-          justifyContent: "center",
-          alignItems: "center",
         }}
         className="item"
       >
@@ -42,7 +40,7 @@ const ListPage = () => {
                 type="checkbox"
                 checked={item.checked}
                 // ei toimi vielä
-                onChange={() => (item.checked = !item.checked)}
+                onChange={(item) => (item.checked = !item.checked)}
               />
             </label>
           </div>
@@ -61,12 +59,10 @@ const ListPage = () => {
               activeColor="#ffd700"
             />
           </div>
-          <details style={{ textAlign: "center" }}>
-            <summary style={{ textAlign: "center" }}>Show details</summary>
-            <div className="description">
-              <p>{item.description}</p>
-            </div>
-          </details>
+
+          <div className="description">
+            <p>{item.description}</p>
+          </div>
         </div>
       </div>
     ));
