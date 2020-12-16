@@ -45,7 +45,8 @@ const ListPage = () => {
               <p>{item.description}</p>
             </div>
             <div className="extra">
-              Deadline: {item.deadline}
+              Deadline: {item.deadline_date}
+              <br></br>
               Tärkeys:{" "}
               <ReactStars
                 count={5}
