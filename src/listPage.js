@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import CreateTask from "./createTask";
 import { Button, Item } from "semantic-ui-react";
 import ReactStars from "react-rating-stars-component";
+import moment from "moment";
 const axios = require("axios");
 
 const ListPage = () => {
@@ -45,7 +46,7 @@ const ListPage = () => {
               <p>{item.description}</p>
             </div>
             <div className="extra">
-              Deadline: {item.deadline_date}
+              Deadline: {reformattedDate(item.deadline_date)}
               <br></br>
               Tärkeys:{" "}
               <ReactStars
@@ -63,6 +64,11 @@ const ListPage = () => {
         </div>
       </div>
     ));
+  };
+
+  const reformattedDate = (date) => {
+    const resultDate = moment(date).format("YYYY/MM/DD");
+    return resultDate;
   };
 
   function handleChange(newValue) {
