@@ -68,11 +68,13 @@ const CreateTask = (props) => {
         </div>
         <div>
           <DatePicker
-            selected={deadline}
-            onChange={(deadline) => setDeadline(deadline)}
             placeholderText="Select deadline"
+            selected={deadline}
+            isClearable
+            onChange={(deadline) => setDeadline(deadline)}
             showTimeSelect
-            dateFormat="MMMM d, yyyy h:mmaa"
+            closeOnScroll={(e) => e.target === document}
+            dateFormat="yyyy-MM-dd"
           />
         </div>
 
