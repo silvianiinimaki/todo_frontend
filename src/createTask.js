@@ -98,18 +98,18 @@ const CreateTask = (props) => {
     );
   };
   const mystyle = {
-    textAlign: "center",
+    textAlign: "left",
     marginTop: "3%",
     color: "black",
     padding: "5px",
     backgroundColor: "lightblue",
     float: "right",
-    width: "50%",
+    width: "30%",
   };
 
   return (
-    <div>
-      <h1 style={mystyle}>Luo uusi tehtävä</h1>
+    <div style={mystyle}>
+      <h1>Luo uusi tehtävä</h1>
       {getTaskInfo()}
     </div>
   );
