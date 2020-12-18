@@ -1,3 +1,6 @@
+.body {
+  background-color: #c3d2d5;
+}
 .uiItems {
   width: 60%;
 }
@@ -5,16 +8,27 @@
   text-align: left;
   color: black;
   padding: 5px;
-  background-color: lightblue;
+  background-color: #bda0bc;
   float: left;
   width: 28%;
+  margin: 15px;
 }
 .newTask {
   text-align: left;
 
   color: black;
   padding: 5px;
-  background-color: lightblue;
+  background-color: #a2708a;
   float: right;
-  width: 30%;
+  width: 39%;
+}
+.button {
+  background-color: #825670;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
 }

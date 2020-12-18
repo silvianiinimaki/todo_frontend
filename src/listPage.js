@@ -89,11 +89,9 @@ const ListPage = () => {
 
   return (
     <div>
-      <div className="uiItems">
+      <div classname="header">
         <h1>ToDo-list</h1>
-        {lista()}
       </div>
-
       <div style={{ textAlign: "center", marginTop: "5%" }}>
         {newTask ? (
           <CreateTask
@@ -105,6 +103,7 @@ const ListPage = () => {
           createTaskButton()
         )}
       </div>
+      <div className="uiItems">{lista()}</div>
     </div>
   );
 };
