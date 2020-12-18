@@ -27,6 +27,8 @@ const ListPage = () => {
     color: "black",
     padding: "5px",
     backgroundColor: "lightblue",
+    float: "left",
+    width: "50%",
   };
 
   const lista = () => {

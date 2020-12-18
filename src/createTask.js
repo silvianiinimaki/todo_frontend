@@ -97,10 +97,19 @@ const CreateTask = (props) => {
       </form>
     );
   };
+  const mystyle = {
+    textAlign: "center",
+    marginTop: "3%",
+    color: "black",
+    padding: "5px",
+    backgroundColor: "lightblue",
+    float: "right",
+    width: "50%",
+  };
 
   return (
     <div>
-      <h1 style={{ textAlign: "center", marginTop: "2%" }}>Luo uusi tehtävä</h1>
+      <h1 style={mystyle}>Luo uusi tehtävä</h1>
       {getTaskInfo()}
     </div>
   );
