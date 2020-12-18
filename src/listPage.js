@@ -21,20 +21,10 @@ const ListPage = () => {
       .catch((err) => console.log(err));
   }, []);
 
-  const mystyle = {
-    textAlign: "left",
-    marginTop: "3%",
-    color: "black",
-    padding: "5px",
-    backgroundColor: "lightblue",
-    float: "left",
-    width: "30%",
-  };
-
   const lista = () => {
     const i = Object.values(list);
     return i.map((item) => (
-      <div style={mystyle} className="item">
+      <div className="item">
         <div className="content">
           <div className="header">{item.title}</div>
           <div className="checked">
@@ -99,7 +89,7 @@ const ListPage = () => {
 
   return (
     <div>
-      <div className="ui items">
+      <div className="uiItems">
         <h1>ToDo-list</h1>
         {lista()}
       </div>
