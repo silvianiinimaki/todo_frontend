@@ -10,7 +10,11 @@ const ListPage = () => {
   const [newTask, setNewTask] = React.useState(false);
   const [list, setList] = React.useState([]);
   const createTaskButton = () => {
-    return <Button onClick={createTask}>Luo uusi tehtävä</Button>;
+    return (
+      <Button class="button" onClick={createTask}>
+        Luo uusi tehtävä
+      </Button>
+    );
   };
   useEffect(() => {
     axios
@@ -90,7 +94,7 @@ const ListPage = () => {
   return (
     <div>
       <div classname="header">
-        <h1>ToDo-list</h1>
+        <h1>ToDo-App</h1>
       </div>
       <div style={{ textAlign: "center", marginTop: "5%" }}>
         {newTask ? (
