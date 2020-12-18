@@ -20,16 +20,20 @@ const ListPage = () => {
       })
       .catch((err) => console.log(err));
   }, []);
+  
+   const mystyle = {
+    textAlign: "center",
+    marginTop: "3%",
+    color: "black",
+    padding: "5px",
+    backgroundColor: "lightblue",
+  };
 
   const lista = () => {
     const i = Object.values(list);
     return i.map((item) => (
       <div
-        style={{
-          textAlign: "center",
-          marginTop: "3%",
-          color: "black",
-        }}
+        style={mystyle} 
         className="item"
       >
         <div className="content">
