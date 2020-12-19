@@ -17,12 +17,7 @@ const CreateTask = (props) => {
       deadline: deadline,
       rating: rating,
     };
-    if (
-      title !== "" &&
-      deadline !== "" &&
-      description !== "" &&
-      rating !== ""
-    ) {
+    if (title !== "" && deadline !== "" && rating !== "") {
       props.handleChange(taskDetails);
       props.newTask(false);
     } else {
@@ -43,7 +38,6 @@ const CreateTask = (props) => {
       <form
         className="ui form"
         style={{
-          textAlign: "center",
           marginTop: "1%",
         }}
         onSubmit={handleSubmit}
@@ -99,8 +93,8 @@ const CreateTask = (props) => {
   };
 
   return (
-    <div>
-      <h1 style={{ textAlign: "center", marginTop: "2%" }}>Luo uusi tehtävä</h1>
+    <div className="newTask">
+      <h1>Luo uusi tehtävä</h1>
       {getTaskInfo()}
     </div>
   );
