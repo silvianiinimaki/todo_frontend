@@ -1,7 +1,29 @@
+@media only screen and (max-width: 600px) {
+  .uiItems {
+    width: 100%;
+    background-color: #c3d2d5;
+  }
+  .item {
+    text-align: left;
+    color: black;
+    padding: 5px;
+    background-color: #bda0bc;
+    width: 100%;
+    margin: 15px;
+  }
+  .newTask {
+    text-align: left;
+    margin: 15px;
+    color: black;
+    padding: 5px;
+    background-color: #a2708a;
+    width: 100%;
+  }
+}
 .header {
   padding: 20px;
   text-align: center;
-  background: #824670;
+  background-color: #824670;
   color: white;
   font-size: 30px;
   width: 100%;
