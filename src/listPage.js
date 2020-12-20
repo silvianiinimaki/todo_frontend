@@ -82,9 +82,7 @@ const ListPage = () => {
 
     // Try adding new value to database
     axios
-      .post("https://tamk-4a00ez62-3002-group20.herokuapp.com/user/1", {
-        value,
-      })
+      .post("https://tamk-4a00ez62-3002-group20.herokuapp.com/user/1", value)
       .then((response) => console.log(response));
 
     setList(list.concat(newValue));
