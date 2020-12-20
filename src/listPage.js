@@ -10,11 +10,7 @@ const ListPage = () => {
   const [newTask, setNewTask] = React.useState(false);
   const [list, setList] = React.useState([]);
   const createTaskButton = () => {
-    return (
-      <Button class="button" onClick={createTask}>
-        Luo uusi tehtävä
-      </Button>
-    );
+    return <Button onClick={createTask}>Luo uusi tehtävä</Button>;
   };
   useEffect(() => {
     axios
@@ -28,7 +24,14 @@ const ListPage = () => {
   const lista = () => {
     const i = Object.values(list);
     return i.map((item) => (
-      <div className="item">
+      <div
+        style={{
+          textAlign: "center",
+          marginTop: "3%",
+          color: "black",
+        }}
+        className="item"
+      >
         <div className="content">
           <div className="header">{item.title}</div>
           <div className="checked">
@@ -93,9 +96,8 @@ const ListPage = () => {
 
   return (
     <div>
-      <div classname="header">
-        <h1>ToDo-App</h1>
-      </div>
+      <div className="ui items">{lista()}</div>
+
       <div style={{ textAlign: "center", marginTop: "5%" }}>
         {newTask ? (
           <CreateTask
@@ -107,7 +109,6 @@ const ListPage = () => {
           createTaskButton()
         )}
       </div>
-      <div className="uiItems">{lista()}</div>
     </div>
   );
 };
