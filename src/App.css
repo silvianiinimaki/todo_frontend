@@ -4,13 +4,14 @@
   background: #824670;
   color: white;
   font-size: 30px;
+  width: 100%;
 }
 .uiItems {
   width: 60%;
   background-color: #c3d2d5;
 }
 .button {
-  background-color: #824670
+  background-color: #824670;
   border: none;
   color: white;
   padding: 15px 32px;

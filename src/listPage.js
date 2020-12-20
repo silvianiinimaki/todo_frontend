@@ -11,7 +11,7 @@ const ListPage = () => {
   const [list, setList] = React.useState([]);
   const createTaskButton = () => {
     return (
-      <Button class="button" onClick={createTask}>
+      <Button className="button" onClick={createTask}>
         Luo uusi tehtävä
       </Button>
     );
@@ -30,7 +30,7 @@ const ListPage = () => {
     return i.map((item) => (
       <div className="item">
         <div className="content">
-          <div className="header">{item.title}</div>
+          <div className="title">{item.title}</div>
           <div className="checked">
             <label>
               <input
