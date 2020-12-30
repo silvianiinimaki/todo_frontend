@@ -11,7 +11,16 @@ const ListPage = () => {
   const [list, setList] = React.useState([]);
   const createTaskButton = () => {
     return (
-      <Button className="button" onClick={createTask}>
+      <Button
+        className="button"
+        onClick={createTask}
+        style={{
+          color: "white",
+          background: "#2AB7CA",
+          padding: "14px 40px",
+          fontSize: "24px",
+        }}
+      >
         Luo uusi tehtävä
       </Button>
     );
@@ -23,14 +32,16 @@ const ListPage = () => {
         setList(response.data);
       })
       .catch((err) => console.log(err));
-  }, []);
+  });
 
   const lista = () => {
     const i = Object.values(list);
     return i.map((item) => (
       <div className="item">
         <div className="content">
-          <div className="title">{item.title}</div>
+          <div className="title">
+            <h2>{item.title}</h2>
+          </div>
           <div className="checked">
             <label>
               <input
@@ -72,15 +83,16 @@ const ListPage = () => {
 
   function handleChange(newValue) {
     setValue(newValue);
+    console.log(newValue);
 
-    // Try adding new value to database
     axios
-      .post("https://tamk-4a00ez62-3002-group20.herokuapp.com/user/1", {
-        value,
+      .post("https://tamk-4a00ez62-3002-group20.herokuapp.com/user/15", {
+        title: newValue.title,
+        description: newValue.description,
+        deadline_date: newValue.deadline_date,
+        rating: newValue.rating,
       })
       .then((response) => console.log(response));
-
-    setList(list.concat(newValue));
   }
 
   function changeNewTask(newValue) {
@@ -93,10 +105,10 @@ const ListPage = () => {
 
   return (
     <div>
-      <div classname="header">
-        <h1>ToDo-App</h1>
+      <div className="header">
+        <h1>ToDo-app</h1>
       </div>
-      <div style={{ textAlign: "center", marginTop: "5%" }}>
+      <div className="taskButton">
         {newTask ? (
           <CreateTask
             value={value}

@@ -2,6 +2,7 @@ import React from "react";
 import { Button } from "semantic-ui-react";
 import ReactStars from "react-rating-stars-component";
 import DatePicker from "react-datepicker";
+import moment from "moment";
 import "react-datepicker/dist/react-datepicker.css";
 
 const CreateTask = (props) => {
@@ -14,7 +15,7 @@ const CreateTask = (props) => {
     const taskDetails = {
       title: title,
       description: description,
-      deadline: deadline,
+      deadline: reformattedDate(deadline),
       rating: rating,
     };
     if (title !== "" && deadline !== "" && rating !== "") {
@@ -32,19 +33,17 @@ const CreateTask = (props) => {
   const backHome = () => {
     props.newTask(false);
   };
+  const reformattedDate = (date) => {
+    const resultDate = moment(date).format("yyyy-MM-DD");
+    return resultDate;
+  };
 
   const getTaskInfo = () => {
     return (
-      <form
-        className="ui form"
-        style={{
-          marginTop: "1%",
-        }}
-        onSubmit={handleSubmit}
-      >
+      <form className="uiform" onSubmit={handleSubmit}>
+        <h1>Luo uusi tehtävä</h1>
         <div className="field">
           <input
-            style={{ width: "20%" }}
             type="text"
             name="title"
             placeholder="Otsikko"
@@ -53,20 +52,18 @@ const CreateTask = (props) => {
         </div>
         <div className="field">
           <input
-            style={{ width: "20%" }}
             type="text"
             name="description"
             placeholder="Kuvaus"
             onChange={(e) => setDescription(e.target.value)}
           />
         </div>
-        <div>
+        <div className="field">
           <DatePicker
             placeholderText="Select deadline"
             selected={deadline}
             isClearable
             onChange={(deadline) => setDeadline(deadline)}
-            showTimeSelect
             closeOnScroll={(e) => e.target === document}
             dateFormat="yyyy-MM-dd"
           />
@@ -85,19 +82,24 @@ const CreateTask = (props) => {
           />
         </div>
         <div className="field">
-          <Button onClick={submitValue}>Lisää listaan</Button>
-          <Button onClick={backHome}>Peruuta</Button>
+          <Button
+            onClick={submitValue}
+            style={{ color: "white", background: "#2AB7CA" }}
+          >
+            Lisää listaan
+          </Button>
+          <Button
+            onClick={backHome}
+            style={{ color: "white", background: "#2AB7CA" }}
+          >
+            Peruuta
+          </Button>
         </div>
       </form>
     );
   };
 
-  return (
-    <div className="newTask">
-      <h1>Luo uusi tehtävä</h1>
-      {getTaskInfo()}
-    </div>
-  );
+  return <div>{getTaskInfo()}</div>;
 };
 
 export default CreateTask;
