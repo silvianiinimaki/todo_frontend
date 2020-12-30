@@ -1,57 +1,59 @@
-@media only screen and (max-width: 600px) {
-  .uiItems {
-    width: 100%;
-    background-color: #c3d2d5;
-  }
-  .item {
-    text-align: left;
-    color: black;
-    padding: 5px;
-    background-color: #bda0bc;
-    width: 100%;
-    margin: 15px;
-  }
-  .newTask {
-    text-align: left;
-    margin: 15px;
-    color: black;
-    padding: 5px;
-    background-color: #a2708a;
-    width: 100%;
-  }
+body {
+  background-color: #f4f4f8;
+}
+p {
+  font-family: "Times New Roman", Times, serif;
+}
+h1 {
+  font-family: "Times New Roman", Times, serif;
+}
+h2 {
+  font-family: "Times New Roman", Times, serif;
+}
+.taskButton {
+  position: absolute;
+  text-align: left;
+  padding-left: 2em;
+
+  width: 33.33%;
 }
 .header {
   padding: 20px;
   text-align: center;
-  background-color: #824670;
-  color: white;
-  font-size: 30px;
+  color: #fe4a49;
   width: 100%;
 }
 .uiItems {
-  width: 60%;
-  background-color: #c3d2d5;
+  width: 66.66%;
+  text-align: left;
+  margin-left: 37%;
 }
-.button {
-  background-color: #824670;
-  border: none;
-  color: white;
-  padding: 15px 32px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  margin: 4px 2px;
-  cursor: pointer;
+.uiform {
+  text-align: left;
+  padding-left: 2em;
+  padding-top: 20px;
+  border-style: solid;
+  border-radius: 15px;
+  border-color: #2ab7ca;
+  background-color: #e6e6ea;
+  height: 250px;
+}
+.field {
+  margin-bottom: 5px;
 }
 .item {
   text-align: left;
   color: black;
-  padding: 5px;
-  background-color: #bda0bc;
+  border-style: solid;
+  border-radius: 15px;
+  border-color: #fed766;
+  padding: 15px;
   float: left;
   width: 28%;
-  margin: 15px;
+  margin-left: 10px;
+  margin-bottom: 10px;
+  background-color: #e6e6ea;
+  height: 150px;
 }
 .newTask {
   text-align: left;
@@ -61,4 +63,12 @@
   background-color: #a2708a;
   float: right;
   width: 39%;
+}
+@media (max-width: 600px) {
+  .uiform {
+    width: 100%;
+  }
+  .uiItems {
+    width: 100%;
+  }
 }
