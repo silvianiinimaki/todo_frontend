@@ -60,7 +60,7 @@ const CreateTask = (props) => {
         </div>
         <div className="field">
           <DatePicker
-            placeholderText="Select deadline"
+            placeholderText="Deadline"
             selected={deadline}
             isClearable
             onChange={(deadline) => setDeadline(deadline)}

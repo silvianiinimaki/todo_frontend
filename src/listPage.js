@@ -36,6 +36,9 @@ const ListPage = () => {
 
   const lista = () => {
     const i = Object.values(list);
+    if (i.length < 1) {
+      return <p style={{ fontSize: "24px" }}>Tehtävälistasi on tyhjä</p>;
+    }
     return i.map((item) => (
       <div className="item">
         <div className="content">
@@ -55,7 +58,7 @@ const ListPage = () => {
           <div className="extra">
             Deadline: {reformattedDate(item.deadline_date)}
             <br></br>
-            Tärkeys:{" "}
+            Tärkeys:
             <ReactStars
               count={5}
               value={item.rating}
@@ -68,9 +71,10 @@ const ListPage = () => {
             />
           </div>
 
-          <div className="description">
+          <details>
+            <summary>Lisätietoja</summary>
             <p>{item.description}</p>
-          </div>
+          </details>
         </div>
       </div>
     ));
@@ -86,7 +90,7 @@ const ListPage = () => {
     console.log(newValue);
 
     axios
-      .post("https://tamk-4a00ez62-3002-group20.herokuapp.com/user/15", {
+      .post("https://tamk-4a00ez62-3002-group20.herokuapp.com/user/5", {
         title: newValue.title,
         description: newValue.description,
         deadline_date: newValue.deadline_date,
@@ -106,7 +110,7 @@ const ListPage = () => {
   return (
     <div>
       <div className="header">
-        <h1>ToDo-app</h1>
+        <h1 style={{ fontSize: "3em" }}>ToDo-app</h1>
       </div>
       <div className="taskButton">
         {newTask ? (
@@ -119,6 +123,7 @@ const ListPage = () => {
           createTaskButton()
         )}
       </div>
+
       <div className="uiItems">{lista()}</div>
     </div>
   );
