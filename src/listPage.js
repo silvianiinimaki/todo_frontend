@@ -16,7 +16,7 @@ const ListPage = () => {
         onClick={createTask}
         style={{
           color: "white",
-          background: "#2AB7CA",
+          background: "#239AA9",
           padding: "14px 40px",
           fontSize: "24px",
         }}
@@ -37,15 +37,16 @@ const ListPage = () => {
   const lista = () => {
     const i = Object.values(list);
     if (i.length < 1) {
-      return <p style={{ fontSize: "24px" }}>Tehtävälistasi on tyhjä</p>;
+      return (
+        <p style={{ fontSize: "24px", textAlign: "left" }}>
+          Tehtävälistasi on tyhjä
+        </p>
+      );
     }
     return i.map((item) => (
-      <div className="item">
+      <div className="item" key={item.id}>
         <div className="content">
-          <div className="title">
-            <h2>{item.title}</h2>
-          </div>
-          <div className="checked">
+          <span className="title">
             <label>
               <input
                 type="checkbox"
@@ -53,47 +54,58 @@ const ListPage = () => {
                 // ei toimi vielä
                 onChange={(item) => (item.checked = !item.checked)}
               />
+              <h2>
+                {item.title} <span style={{ marginLeft: "20px" }}></span>
+              </h2>
             </label>
-          </div>
-          <div className="extra">
-            Deadline: {reformattedDate(item.deadline_date)}
-            <br></br>
-            Tärkeys:
-            <ReactStars
-              count={5}
-              value={item.rating}
-              size={24}
-              edit={false}
-              isHalf={false}
-              emptyIcon={<i className="far fa-star"></i>}
-              fullIcon={<i className="fa fa-star"></i>}
-              activeColor="#ffd700"
-            />
-          </div>
+          </span>
+          <div className="dropdownContent">
+            <div className="extra">
+              Deadline: {showDate(item.deadline_date)}
+              <br></br>
+              Tärkeys:
+              <ReactStars
+                count={5}
+                value={item.rating}
+                size={24}
+                edit={false}
+                isHalf={false}
+                emptyIcon={<i className="far fa-star"></i>}
+                fullIcon={<i className="fa fa-star"></i>}
+                activeColor="#ffd700"
+              />
+            </div>
 
-          <details>
-            <summary>Lisätietoja</summary>
-            <p>{item.description}</p>
-          </details>
+            <div className="description">
+              <p> Kuvaus: {item.description}</p>
+            </div>
+            <div className="tag">
+              <p> Aihe: {item.tag}</p>
+            </div>
+          </div>
         </div>
       </div>
     ));
   };
 
   const reformattedDate = (date) => {
-    const resultDate = moment(date).format("DD/MM/YYYY");
+    const resultDate = moment(date).format("YYYY-MM-DD");
     return resultDate;
   };
-
+  const showDate = (date) => {
+    const resultDate = moment(date).format("DD.MM.YYYY");
+    return resultDate;
+  };
   function handleChange(newValue) {
     setValue(newValue);
-    console.log(newValue);
+
+    const deadline = reformattedDate(newValue.deadline_date);
 
     axios
-      .post("https://tamk-4a00ez62-3002-group20.herokuapp.com/user/5", {
+      .post("https://tamk-4a00ez62-3002-group20.herokuapp.com/user/1", {
         title: newValue.title,
         description: newValue.description,
-        deadline_date: newValue.deadline_date,
+        deadline_date: deadline,
         rating: newValue.rating,
       })
       .then((response) => console.log(response));

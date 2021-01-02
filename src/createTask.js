@@ -1,7 +1,7 @@
 import React from "react";
 import { Button } from "semantic-ui-react";
 import ReactStars from "react-rating-stars-component";
-import DatePicker from "react-datepicker";
+import DatePicker, { registerLocale } from "react-datepicker";
 import moment from "moment";
 import "react-datepicker/dist/react-datepicker.css";
 
@@ -11,12 +11,14 @@ const CreateTask = (props) => {
 
   const [deadline, setDeadline] = React.useState(new Date());
   const [rating, setRating] = React.useState("");
+  const [tag, setTag] = React.useState("");
   const submitValue = () => {
     const taskDetails = {
       title: title,
       description: description,
-      deadline: reformattedDate(deadline),
+      deadline: deadline,
       rating: rating,
+      tag: tag,
     };
     if (title !== "" && deadline !== "" && rating !== "") {
       props.handleChange(taskDetails);
@@ -32,10 +34,6 @@ const CreateTask = (props) => {
 
   const backHome = () => {
     props.newTask(false);
-  };
-  const reformattedDate = (date) => {
-    const resultDate = moment(date).format("yyyy-MM-DD");
-    return resultDate;
   };
 
   const getTaskInfo = () => {
@@ -59,13 +57,20 @@ const CreateTask = (props) => {
           />
         </div>
         <div className="field">
+          <input
+            type="text"
+            name="tag"
+            placeholder="Aihe"
+            onChange={(e) => setTag(e.target.value)}
+          />
+        </div>
+        <div className="field">
           <DatePicker
             placeholderText="Deadline"
             selected={deadline}
             isClearable
-            onChange={(deadline) => setDeadline(deadline)}
             closeOnScroll={(e) => e.target === document}
-            dateFormat="yyyy-MM-dd"
+            onChange={(deadline) => setDeadline(deadline)}
           />
         </div>
 
