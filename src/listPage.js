@@ -5,12 +5,14 @@ import { Button, Item } from "semantic-ui-react";
 import ReactStars from "react-rating-stars-component";
 import moment from "moment";
 import { findAllByTestId } from "@testing-library/react";
+import SearchBar from './searchBar'
 const axios = require("axios");
 
 const ListPage = () => {
   const [value, setValue] = React.useState("");
   const [newTask, setNewTask] = React.useState(false);
   const [list, setList] = React.useState([]);
+  const [search, setSearch] = React.useState("");
 
   const createTaskButton = () => {
     return (
@@ -59,6 +61,57 @@ const ListPage = () => {
           Tehtävälistasi on tyhjä
         </p>
       );
+    } else if (search !== "") {
+      const filtered = i.filter(x =>(
+        x.title.toLowerCase().includes(search.toLowerCase()) || x.tag.toLowerCase().includes(search.toLowerCase())
+      ))
+      return filtered.map((item) => (
+        <div className="item" key={item.id}>
+          <div className="content">
+            <span className="title">
+              <label>
+                <h2>
+                  {item.title}{" "}
+                  <span style={{ marginLeft: "20px" }}>
+                    <input
+                      type="checkbox"
+                      checked={!!+item.checked}
+                      onChange={() => handleChecked(item)}
+                    />
+                  </span>
+                </h2>
+              </label>
+            </span>
+            <div className="dropdownContent">
+              <div className="extra">
+                Deadline: {showDate(item.deadline_date)}
+                <br></br>
+                Tärkeys:
+                <ReactStars
+                  count={5}
+                  value={item.rating}
+                  size={24}
+                  edit={false}
+                  isHalf={false}
+                  emptyIcon={<i className="far fa-star"></i>}
+                  fullIcon={<i className="fa fa-star"></i>}
+                  activeColor="#ffd700"
+                />
+              </div>
+  
+              <div className="description">
+                <p> Kuvaus: {item.description}</p>
+              </div>
+              <div className="tag">
+                <p> Aihe: {item.tag}</p>
+              </div>
+              <div>
+                <p>Luotu: {showDate(item.creation_date)}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      ));
     }
     return i.map((item) => (
       <div className="item" key={item.id}>
@@ -181,7 +234,7 @@ const ListPage = () => {
         )}
       </div>
       <div className="deleteButton">{createDeleteButton()}</div>
-
+      <SearchBar handleChange={(e) => setSearch(e.target.value)}/>
       <div className="uiItems">{lista()}</div>
     </div>
   );
