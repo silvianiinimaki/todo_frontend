@@ -1,14 +1,17 @@
 import React, { useEffect } from "react";
 import CreateTask from "./createTask";
+
 import { Button, Item } from "semantic-ui-react";
 import ReactStars from "react-rating-stars-component";
 import moment from "moment";
+import { findAllByTestId } from "@testing-library/react";
 const axios = require("axios");
 
 const ListPage = () => {
   const [value, setValue] = React.useState("");
   const [newTask, setNewTask] = React.useState(false);
   const [list, setList] = React.useState([]);
+
   const createTaskButton = () => {
     return (
       <Button
@@ -33,7 +36,21 @@ const ListPage = () => {
       })
       .catch((err) => console.log(err));
   });
+  const handleChecked = (item) => {
+    item.checked = !item.checked;
+    var check = 0;
+    if (item.checked === true) {
+      check = 1;
+    }
+    const url =
+      "https://tamk-4a00ez62-3002-group20.herokuapp.com/task/" + item.id;
 
+    axios
+      .post(url, {
+        checked: check,
+      })
+      .then((response) => console.log(response));
+  };
   const lista = () => {
     const i = Object.values(list);
     if (i.length < 1) {
@@ -48,14 +65,15 @@ const ListPage = () => {
         <div className="content">
           <span className="title">
             <label>
-              <input
-                type="checkbox"
-                checked={item.checked}
-                // ei toimi vielä
-                onChange={(item) => (item.checked = !item.checked)}
-              />
               <h2>
-                {item.title} <span style={{ marginLeft: "20px" }}></span>
+                {item.title}{" "}
+                <span style={{ marginLeft: "20px" }}>
+                  <input
+                    type="checkbox"
+                    checked={!!+item.checked}
+                    onChange={() => handleChecked(item)}
+                  />
+                </span>
               </h2>
             </label>
           </span>
@@ -82,6 +100,9 @@ const ListPage = () => {
             <div className="tag">
               <p> Aihe: {item.tag}</p>
             </div>
+            <div>
+              <p>Luotu: {showDate(item.creation_date)}</p>
+            </div>
           </div>
         </div>
       </div>
@@ -102,11 +123,12 @@ const ListPage = () => {
     const deadline = reformattedDate(newValue.deadline_date);
 
     axios
-      .post("https://tamk-4a00ez62-3002-group20.herokuapp.com/user/1", {
+      .post("https://tamk-4a00ez62-3002-group20.herokuapp.com/", {
         title: newValue.title,
         description: newValue.description,
         deadline_date: deadline,
         rating: newValue.rating,
+        tag: newValue.tag,
       })
       .then((response) => console.log(response));
   }
@@ -119,11 +141,34 @@ const ListPage = () => {
     setNewTask(true);
   };
 
+  const createDeleteButton = () => {
+    return (
+      <Button
+        className="button"
+        onClick={deleteChecked}
+        style={{
+          color: "white",
+          background: "#FED766",
+          padding: "14px 40px",
+          fontSize: "24px",
+        }}
+      >
+        Poista  valmiit
+      </Button>
+    );
+  };
+  const deleteChecked = () => {
+    axios
+      .delete("https://tamk-4a00ez62-3002-group20.herokuapp.com/")
+      .then((response) => console.log(response));
+  };
+
   return (
     <div>
       <div className="header">
         <h1 style={{ fontSize: "3em" }}>ToDo-app</h1>
       </div>
+
       <div className="taskButton">
         {newTask ? (
           <CreateTask
@@ -135,6 +180,7 @@ const ListPage = () => {
           createTaskButton()
         )}
       </div>
+      <div className="deleteButton">{createDeleteButton()}</div>
 
       <div className="uiItems">{lista()}</div>
     </div>
