@@ -5,14 +5,14 @@ You can find the app from https://todo-tiko.herokuapp.com/. </br>
 <img src="ss.png" alt="App" width="50%"/>
 
 # Features:
-<li>
-  <ul>Add items to list</ul>
-  <ul>Choose date from calendar</ul>
-  <ul>Choose rating with stars</ul>
-  <ul>Check items</ul>
-  <ul>Search with tag or title</ul>
-  <ul>Delete checked items</ul>
-</li>
+<ul>
+  <li>Add items to list</li>
+  <li>Choose date from calendar</li>
+  <li>Choose rating with stars</li>
+  <li>Check items</li>
+  <li>Search with tag or title</li>
+  <li>Delete checked items</li>
+</ul>
 
 <img src="ss3.png" alt="App" width="70%"/>
 <img src="ss6.png" alt="App" width="70%"/>
